@@ -739,8 +739,8 @@ confusionMatrix(predictionsTraining,trainingNew$classe)</code></pre>
 ## Balanced Accuracy       1.000    1.000    1.000    1.000    1.000</code></pre>
 <p>After generating predictions for the training set, the confusion matrix revealed perfect prediction accuracy (Accuracy=1) with respect to the training set.</p>
 </div>
-<div id="estimating-error-with-cross-validation" class="section level2">
-<h2>Estimating Error with Cross Validation</h2>
+<div id="estimating-oob-error-with-cross-validation" class="section level2">
+<h2>Estimating OOB Error with Cross Validation</h2>
 <p>While this is encouraging, there is always going to be some overfitting that occurs with the training set, and this is likely reflected in this number. Consequently, I now ran predictions and found a confusion matrix for the cross validation test set that I had created.</p>
 <pre class="r"><code>predictionsTesting&lt;-predict(modFit,testingNew)
 confusionMatrix(predictionsTesting,testingNew$classe)</code></pre>
@@ -775,7 +775,7 @@ confusionMatrix(predictionsTesting,testingNew$classe)</code></pre>
 ## Detection Rate          0.284    0.192    0.173    0.163    0.183
 ## Detection Prevalence    0.285    0.193    0.175    0.163    0.184
 ## Balanced Accuracy       0.999    0.996    0.997    0.996    0.999</code></pre>
-<p>Fortunately, the results remained very encouraging. The confusion matrix with the predictions from the “testingNew” still showed accuracy of .996, a very high prediction accuracy in this scenario.</p>
+<p>Fortunately, the results remained very encouraging. The confusion matrix with the predictions from the “testingNew” still showed accuracy of .996, a very high prediction accuracy in this scenario. This gives an OOB error estimate of .4%.</p>
 <p>In order to get a better sense of which variables were of the greatest importance in the model, I used the varImpPlot function.</p>
 <pre class="r"><code>library(randomForest)</code></pre>
 <pre><code>## Warning: package 'randomForest' was built under R version 3.1.1</code></pre>
